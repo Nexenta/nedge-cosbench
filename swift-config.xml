@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="swift-simple" description="simple benchmark for swift">
+
+  <auth type="none" config="username=test:nexenta;password=nexenta;auth_url=http://<gateway ip>:9981/auth/v1.0"/>
+  <storage type="swift" config="storage_url=http://<gateway ip>:9981/v1/test;timeout=240000" />
+
+  <workflow>
+
+    <workstage name="init">
+      <work type="init" workers="1" config="cprefix=ck;containers=r(1,10)" />
+    </workstage>
+
+    <workstage name="prepare">
+      <work type="prepare" workers="1" config="cprefix=ck;containers=r(1,10);objects=r(1,11);sizes=c(64)KB" />
+    </workstage>
+
+    <workstage name="main">
+      <work name="main" workers="1" totalOps="1000">
+        <operation type="read" ratio="80" config="cprefix=ck;containers=u(1,10);objects=u(1,5)" />
+        <operation type="write" ratio="20" config="cprefix=ck;containers=u(1,10);objects=u(6,11);sizes=c(64)KB" />
+      </work>
+    </workstage>
+
+    <workstage name="cleanup" closuredelay="30">
+      <work type="cleanup" workers="4" config="cprefix=ck;containers=r(1,10);objects=r(1,11)" />
+    </workstage>
+
+    <workstage name="dispose" closuredelay="0">
+      <work type="dispose" workers="1" config="cprefix=ck;containers=r(1,10)"/>
+    </workstage>
+
+  </workflow>
+
+</workload>
