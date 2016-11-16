@@ -60,7 +60,7 @@ fi
 if  [ "$2" = "both" ]; then
 
 n=1
-if [ "$3x" -ne "x" ]; then
+if [ "$3x" != "x" ]; then
 n=$3
 fi 
 
