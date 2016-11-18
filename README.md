@@ -2,7 +2,8 @@
 
 
 
-Build Docker Image
+## Build Docker Image
+
 1. Create repository clone
 2. Build nexenta/cosbench using instructions in nexenta/cosbench/Build.md
  url: https://github.com/Nexenta/cosbench/blob/master/BUILD.md
