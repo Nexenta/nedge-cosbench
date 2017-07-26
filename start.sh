@@ -1,6 +1,17 @@
 #!/bin/bash
 # starting drives and controlles
 
+u=0
+if [ "$3" = "true" ] || [ "$4" = "true" ]; then
+   u=1
+fi
+
+if [ $u -eq 0 ]; then
+   echo "Setting compressible objects on"
+   echo "true" > /cos/compress
+fi
+
+
 
 if [ $# -eq 0 ] || [ "$2" = "driver" ]; then
 echo "Starting only driver"

@@ -12,6 +12,6 @@ EXPOSE 18088
 EXPOSE 19088
 
 COPY cos /cos
-CMD cd /cos;./start.sh $ip $t  $n
+CMD cd /cos;./start.sh $ip $t $n $u
 
 
