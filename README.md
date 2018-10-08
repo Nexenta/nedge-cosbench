@@ -11,6 +11,6 @@
 4. Copy start.sh to cos folder
 5. $ docker build -t nedge-cosbench .
 6. $ docker images
-7. $ docker tag <Image ID> nexenta/cosbench:latest
+7. $ docker tag nedge-cosbench:latest nexenta/cosbench:latest
 8. $ docker login
 9. $ docker push nexenta/cosbench
